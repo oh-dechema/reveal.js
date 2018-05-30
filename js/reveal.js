@@ -4608,11 +4608,11 @@
 
 				if( deltaX > touch.threshold && Math.abs( deltaX ) > Math.abs( deltaY ) ) {
 					touch.captured = true;
-					navigateLeft();
+					self.location.href = '#'; // replaced to go back to "home"
 				}
 				else if( deltaX < -touch.threshold && Math.abs( deltaX ) > Math.abs( deltaY ) ) {
 					touch.captured = true;
-					navigateRight();
+					// deleted to prevent swipe between chapters
 				}
 				else if( deltaY > touch.threshold ) {
 					touch.captured = true;
