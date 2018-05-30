@@ -80,6 +80,7 @@
 		var navigateHome = document.createElement( 'aside' );
 		navigateHome.className = 'controlHome';
 		navigateHome.innerHTML = '<img alt="Home" id="home-button" src="img/home.svg" style="width: 40px">';
+		navigateHome.style.display = 'None';
 		document.getElementsByClassName( 'reveal' )[0].appendChild( navigateHome );
 		navigateHome.addEventListener("click", function(){ self.location.href = '#' });
 		Reveal.addEventListener( 'slidechanged', function( event ) {
