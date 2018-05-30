@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+	<style>
+	.controlHome {
+		position: absolute;
+		top: 12px;
+		bottom: auto;
+		right: 12px;
+		left: auto;
+		z-index: 1;
+	}
+	.navigate-home {
+		background-color: transparent;
+		border: 0;
+		outline: 0;
+		cursor: pointer;
+		color: currentColor;
+	}
+	#home-button:hover {
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+	}
+	</style>
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section id="home">Slide 1 <a href="#/1">Link</a></section>
+			<section>
+				<section>Slide 2-1 <a href="#">Home</a></section>
+				<section>Slide 2-2 <a href="#">Home</a></section>
+			</section>
+			<section>
+				<section>Slide 3-1</section>
+				<section>Slide 3-2</section>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+	// More info about config & dependencies:
+	// - https://github.com/hakimel/reveal.js#configuration
+	// - https://github.com/hakimel/reveal.js#dependencies
+	Reveal.initialize({
+		controls: true,
+		progress: false,
+		touch: true,
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/notes/notes.js', async: true },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+	Reveal.addEventListener( 'ready', function( event ) {
+		document.getElementsByClassName( 'navigate-right' )[0].style.display = 'None';
+		document.getElementsByClassName( 'navigate-left' )[0].style.display = 'None';
+		var navigateHome = document.createElement( 'aside' );
+		navigateHome.className = 'controlHome';
+		navigateHome.innerHTML = '<img alt="Home" id="home-button" src="img/home.svg" style="width: 40px">';
+		document.getElementsByClassName( 'reveal' )[0].appendChild( navigateHome );
+		navigateHome.addEventListener("click", function(){ self.location.href = '#' });
+		Reveal.addEventListener( 'slidechanged', function( event ) {
+			// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			if(event.currentSlide.id === "home"){
+				navigateHome.style.display = 'None';
+			}
+			else {
+				navigateHome.style.display = 'block';
+			}
+		} );
+	} );
+
+	</script>
+</body>
+</html>
